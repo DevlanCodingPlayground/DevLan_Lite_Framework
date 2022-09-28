@@ -79,7 +79,7 @@ require_once('../partials/head.php');
                 <a href="" class="h1"><b>i</b>Pet</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Reset password - Enter your login username</p>
 
                 <form method="post">
                     <div class="input-group mb-3">
@@ -90,33 +90,21 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" required name="login_password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-8">
-                            <a href="reset_password">I forgot my password</a>
+                            <a href="index">I remember my password</a>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" name="Login" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" name="Reset_Password_Step_1" class="btn btn-primary btn-block">Reset</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <hr>
                 <!-- /.social-auth-links -->
 
-                <div class="text-center">
-                    <a href="register?as=Owner" class="btn btn-primary">Join as Pet Owner</a>
-                    <a href="register?as=Adopter" class="btn btn-primary">Join as Pet Adopter</a>
-                </div>
+                
             </div>
             <!-- /.card-body -->
         </div>
