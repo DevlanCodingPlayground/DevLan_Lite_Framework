@@ -38,7 +38,42 @@ if (isset($_POST['Login'])) {
 
  /* Sign Up As Pet Owner */
 
- /* Reset Password Step 1 */
+/* Reset Password Step 1 */
+if (isset($_POST['Reset_Password_Step_1'])) {
+    $login_username = mysqli_real_escape_string($mysqli, $_POST['login_username']);
+    /* Check If User Exists */
+    $sql = "SELECT * FROM  login WHERE login_username = '{$login_username}'";
+    $res = mysqli_query($mysqli, $sql);
+    if (mysqli_num_rows($res) > 0) {
+        /* Redirect User To Confirm Password */
+        $_SESSION['success'] = 'Password Reset Token Generated, Proceed To Confirm Password';
+        $_SESSION['login_username'] = $login_username;
+        header('Location: confirm_password');
+        exit;
+    } else {
+        $err = "Username Does Not Exist";
+    }
+}
 
- /* Reset Password Step 2 */
- 
+/* Reset Password Step 2 */
+if (isset($_POST['Reset_Password_Step_2'])) {
+    $login_username = mysqli_real_escape_string($mysqli, $_SESSION['login_username']);
+    $new_password = (md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password =(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+    /* Check If They Match */
+    if ($new_password != $confirm_password) {
+        $err = "Passwords Does Not Match";
+    } else {
+        $sql = "UPDATE login SET login_password = '{$confirm_password}' WHERE login_username = '{$login_username}'";
+
+        if (mysqli_query($mysqli, $sql)) {
+            /* Pass This Alert Via Session */
+            $_SESSION['success'] = 'Your Password Has Been Reset Proceed To Login';
+            header('Location: index');
+            exit;
+        } else {
+            $err = "Failed!, Please Try Again";
+        }
+    }
+}

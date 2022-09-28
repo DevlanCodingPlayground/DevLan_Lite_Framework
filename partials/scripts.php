@@ -51,3 +51,11 @@ if (isset($info)) { ?>
     </script>
 <?php }
 ?>
+
+
+<script>
+    // Prevent Double Resubmission
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
