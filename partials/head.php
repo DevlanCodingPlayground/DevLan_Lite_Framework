@@ -19,7 +19,7 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../public/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
