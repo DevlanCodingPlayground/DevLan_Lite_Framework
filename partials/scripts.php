@@ -1,7 +1,7 @@
  <!-- jQuery -->
- <script src="plugins/jquery/jquery.min.js"></script>
+ <script src="../public/plugins/jquery/jquery.min.js"></script>
  <!-- jQuery UI 1.11.4 -->
- <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+ <script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
  <script>
      $.widget.bridge('uibutton', $.ui.button)
@@ -28,8 +28,6 @@
  <script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
  <!-- AdminLTE App -->
  <script src="../public/js/adminlte.js"></script>
- <!-- AdminLTE for demo purposes -->
- <script src="../public/js/demo.js"></script>
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="../public/js/pages/dashboard.js"></script>
  <!-- Toastr -->
