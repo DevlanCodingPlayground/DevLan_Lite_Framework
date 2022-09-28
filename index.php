@@ -75,5 +75,5 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 }
 $uri .= $_SERVER['HTTP_HOST'];
 /* Redirect To Index Under Views */
-header('Location: ' . $uri . '/Pet_adoption_system/views/');
+header('Location: ' . $uri . '/iPet/views/');
 exit;
