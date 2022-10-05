@@ -148,10 +148,7 @@ require_once('../partials/head.php');
                     <hr>
                     <!-- /.social-auth-links -->
 
-                    <div class="text-center">
-                        <a href="register?as=Owner" class="btn btn-primary">Join as Pet Owner</a>
-                        <a href="register?as=Adopter" class="btn btn-primary">Join as Pet Adopter</a>
-                    </div>
+                  
                 </div>
                 <!-- /.card-body -->
             <?php
