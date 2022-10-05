@@ -231,8 +231,10 @@ require_once('../partials/head.php');
             } else {
 
 
-            ?>
-            <?php
+                /* Error If Someone Tries To Play With The Url */
+                $_SESSION['success'] = 'Horah, you have unlocked an hidden easter egg';
+                header('Location: ../');
+                exit;
             }
             ?>
         </div>
