@@ -189,11 +189,11 @@ require_once('../partials/head.php');
                                                     <td><?php echo $user->pet_owner_address; ?></td>
                                                     <td><?php echo $user->login_username; ?></td>
                                                     <td>
-                                                        <a data-toggle="modal" href="#update_<?php echo $user->admin_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
-                                                        <a data-toggle="modal" href="#delete_<?php echo $user->admin_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                        <a data-toggle="modal" href="#update_<?php echo $user->pet_owner_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
+                                                        <a data-toggle="modal" href="#delete_<?php echo $user->pet_owner_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                     </td>
                                                     <!-- Update Modal -->
-                                                    <div class="modal fade fixed-right" id="update_<?php echo $user->admin_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal fade fixed-right" id="update_<?php echo $user->pet_owner_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog  modal-xl" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header align-items-center">
@@ -205,26 +205,7 @@ require_once('../partials/head.php');
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form method="post" enctype="multipart/form-data" role="form">
-                                                                        <div class="row">
-                                                                            <div class="form-group col-md-4">
-                                                                                <label for="">Full Names</label>
-                                                                                <input type="hidden" required name="login_id" value="<?php echo $user->login_id; ?>" class="form-control">
-                                                                                <input type="text" required name="admin_name" value="<?php echo $user->admin_name; ?>" class="form-control">
-                                                                            </div>
-                                                                            <div class="form-group col-md-4">
-                                                                                <label for="">Login Username</label>
-                                                                                <input type="text" required name="login_username" value="<?php echo $user->login_username; ?>" class="form-control">
-                                                                            </div>
-                                                                            <div class="form-group col-md-4">
-                                                                                <label for="">Login Password</label>
-                                                                                <input type="password" required name="login_password" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="text-right">
-                                                                            <button type="submit" name="Update_Staff" class="btn btn-warning">Update Staff</button>
-                                                                        </div>
-                                                                    </form>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -232,7 +213,7 @@ require_once('../partials/head.php');
                                                     <!-- End Modal -->
 
                                                     <!-- Delete Modal -->
-                                                    <div class="modal fade" id="delete_<?php echo $user->admin_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="delete_<?php echo $user->pet_owner_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -248,7 +229,7 @@ require_once('../partials/head.php');
                                                                         <!-- Hide This -->
                                                                         <input type="hidden" name="login_id" value="<?php echo $user->login_id; ?>">
                                                                         <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="Delete_User" value="Delete" class="text-center btn btn-danger">
+                                                                        <input type="submit" name="Delete_PetOwner" value="Delete" class="text-center btn btn-danger">
                                                                     </div>
                                                                 </form>
                                                             </div>
