@@ -166,6 +166,9 @@ require_once('../partials/head.php');
                                         <thead>
                                             <tr>
                                                 <th>Names</th>
+                                                <th>Email</th>
+                                                <th>Contacts</th>
+                                                <th>Address</th>
                                                 <th>Login Username</th>
                                                 <th>Manage</th>
                                             </tr>
@@ -173,14 +176,17 @@ require_once('../partials/head.php');
                                         <tbody>
                                             <?php
                                             $ret = "SELECT * FROM login l
-                                            INNER JOIN admin a ON a.admin_login_id  = l.login_id";
+                                            INNER JOIN pet_owner po ON po.pet_owner_login_id  = l.login_id";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute(); //ok
                                             $res = $stmt->get_result();
                                             while ($user = $res->fetch_object()) {
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $user->admin_name; ?></td>
+                                                    <td><?php echo $user->pet_owner_name; ?></td>
+                                                    <td><?php echo $user->pet_owner_email; ?></td>
+                                                    <td><?php echo $user->pet_owner_contacts; ?></td>
+                                                    <td><?php echo $user->pet_owner_address; ?></td>
                                                     <td><?php echo $user->login_username; ?></td>
                                                     <td>
                                                         <a data-toggle="modal" href="#update_<?php echo $user->admin_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
