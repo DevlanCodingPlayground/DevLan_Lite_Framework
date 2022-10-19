@@ -59,3 +59,13 @@ if (isset($_POST['update_pet_adopter'])) {
 }
 
 //delete pet adopter
+if (isset($_POST['delete_pet_adopter'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
+    $delete_sql= "DELETE FROM login WHERE login_id = '{$login_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Pet Adopter is sucessfully deleted!";
+    } else {
+        $err = "Failed saving login information, please try again";
+    }
+}
