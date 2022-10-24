@@ -7,15 +7,15 @@ if (isset($_POST['add_pet'])) {
     $pet_age = mysqli_real_escape_string($mysqli, $_POST['pet_age']);
     $pet_health_status = mysqli_real_escape_string($mysqli, $_POST['pet_health_status']);
     $pet_description = mysqli_real_escape_string($mysqli, $_POST['pet_description']);
-    $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
+   // $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
 
     $pet_image = mysqli_real_escape_string($mysqli, $_FILES["pet_image"]["name"]);
     $tempname = $_FILES["pet_image"]["tmp_name"];
     $folder = "../public/img/pets/" . $pet_image;
 
 
-    $insert_sql = "INSERT INTO pet (pet_owner_id,pet_type,pet_breed,pet_age, pet_health_status,pet_description,pet_adoption_status)
-    VALUES ('{$pet_owner_id}','{$pet_type}','{$pet_breed}','{$pet_age}','{$pet_health_status}','{$pet_description}','{$pet_adoption_status}')";
+    $insert_sql = "INSERT INTO pet (pet_owner_id,pet_type,pet_breed,pet_age, pet_health_status,pet_description,pet_image)
+    VALUES ('{$pet_owner_id}','{$pet_type}','{$pet_breed}','{$pet_age}','{$pet_health_status}','{$pet_description}','{$pet_image}')";
 
     if (mysqli_query($mysqli, $insert_sql) && move_uploaded_file($tempname, $folder)) {
         $success = "pet registered successfully";
