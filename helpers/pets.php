@@ -20,9 +20,8 @@ if (isset($_POST['add_pet'])) {
     if (mysqli_query($mysqli, $insert_sql) && move_uploaded_file($tempname, $folder)) {
         $success = "pet registered successfully";
     } else {
-        $err="Sorry.failed to register pet.";
+        $err = "Sorry.failed to register pet.";
     }
-
 }
 //update pet
 if (isset($_POST['update_pet'])) {
@@ -38,10 +37,28 @@ if (isset($_POST['update_pet'])) {
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "pet updated successfully";
     } else {
-        $err="Sorry.failed to update pet.";
+        $err = "Sorry.failed to update pet.";
     }
-
 }
+
+// update pet image
+if (isset($_POST['update_pet_image'])) {
+    $pet_id = mysqli_real_escape_string($mysqli, $_POST['pet_id']);
+
+    $pet_image = mysqli_real_escape_string($mysqli, $_FILES["pet_image"]["name"]);
+    $tempname = $_FILES["pet_image"]["tmp_name"];
+    $folder = "../public/img/pets/" . $pet_image;
+
+
+    $update_pet_image_sql = "UPDATE pet SET pet_image='{$pet_image}' WHERE pet_id='{$pet_id}'";
+
+    if (mysqli_query($mysqli, $update_pet_image_sql) && move_uploaded_file($tempname, $folder)) {
+        $success = "pet image updated successfully";
+    } else {
+        $err = "Sorry.failed to update pet image.";
+    }
+}
+
 //delete pet
 if (isset($_POST['delete_pet'])) {
     $pet_id = mysqli_real_escape_string($mysqli, $_POST['pet_id']);
@@ -49,7 +66,6 @@ if (isset($_POST['delete_pet'])) {
     if (mysqli_query($mysqli, $delete_sql)) {
         $success = "pet deleted successfully";
     } else {
-        $err="Sorry.failed to delete pet.";
+        $err = "Sorry.failed to delete pet.";
     }
-
 }
