@@ -38,3 +38,13 @@ if (isset($_POST['update_pet'])) {
 
 }
 //delete pet
+if (isset($_POST['delete_pet'])) {
+    $pet_id = mysqli_real_escape_string($mysqli, $_POST['pet_id']);
+    $delete_sql = "DELETE FROM pet WHERE pet_id= '{$pet_id}'";
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "pet deleted successfully";
+    } else {
+        $err="Sorry.failed to delete pet.";
+    }
+
+}
