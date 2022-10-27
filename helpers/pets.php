@@ -31,9 +31,9 @@ if (isset($_POST['update_pet'])) {
     $pet_age = mysqli_real_escape_string($mysqli, $_POST['pet_age']);
     $pet_health_status = mysqli_real_escape_string($mysqli, $_POST['pet_health_status']);
     $pet_description = mysqli_real_escape_string($mysqli, $_POST['pet_description']);
-    $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
+  //  $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
 
-    $update_sql = "UPDATE pet SET pet_type='{$pet_type}', pet_breed='{$pet_breed}', pet_age='{$pet_age}', pet_health_status='{$pet_health_status}', pet_description='{$pet_description}', pet_adoption_status='{$pet_adoption_status}' WHERE pet_id='{$pet_id}' ";
+    $update_sql = "UPDATE pet SET pet_type='{$pet_type}', pet_breed='{$pet_breed}', pet_age='{$pet_age}', pet_health_status='{$pet_health_status}', pet_description='{$pet_description}' WHERE pet_id='{$pet_id}' ";
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "pet updated successfully";
     } else {

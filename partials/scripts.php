@@ -105,3 +105,21 @@
          });
      });
  </script>
+ <script>
+    /* Filter Products */
+    function FilterFunction() {
+      let input = document.getElementById('Pet_Search').value
+      input = input.toLowerCase();
+      let x = document.getElementsByClassName('Pet_details');
+      /* Perform Magic Here */
+      for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display = "none";
+        } else if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display = "none";
+        } else {
+          x[i].style.display = "";
+        }
+      }
+    }
+  </script>
