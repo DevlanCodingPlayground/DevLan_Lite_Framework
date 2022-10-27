@@ -216,6 +216,7 @@ require_once('../partials/head.php');
                                                     </td>
                                                     <td>
                                                         <a data-toggle="modal" href="#update_<?php echo $pet->pet_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
+                                                        <a data-toggle="modal" href="#update_image_<?php echo $pet->pet_id; ?>" class="badge badge-warning"><i class="fas fa-image"></i> Edit Image</a>
                                                         <a data-toggle="modal" href="#delete_<?php echo $pet->pet_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                     </td>
                                                     <!-- Update Modal -->
@@ -257,6 +258,35 @@ require_once('../partials/head.php');
                                                                         </div>
                                                                         <div class="text-right">
                                                                             <button type="submit" name="update_pet" class="btn btn-warning">Update Pet </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade fixed-right" id="update_image_<?php echo $pet->pet_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog  modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header align-items-center">
+                                                                    <div class="text-bold">
+                                                                        <h6 class="text-bold">Update Pet Image</h6>
+                                                                    </div>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="post" enctype="multipart/form-data" role="form">
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label for="">Pet Image</label>
+                                                                                <input type="file" required name="pet_image" class="form-control">
+                                                                                <input type="hidden" name="pet_id" value="<?php echo $pet->pet_id; ?>">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="text-right">
+                                                                            <button type="submit" name="update_pet_image" class="btn btn-warning">Update Pet Image </button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
