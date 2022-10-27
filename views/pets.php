@@ -175,7 +175,7 @@ require_once('../partials/head.php');
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <form class="form-inline">
-                            <input type="text" class="form-control mb-4 mr-sm-2" placeholder="Search Pet">
+                            <input type="text" class="form-control mb-4 mr-sm-2" placeholder="Search Pet" id="Pet_Search" onkeyup="FilterFunction()">
                         </form>
                     </div>
 
@@ -188,15 +188,28 @@ require_once('../partials/head.php');
                         $res = $stmt->get_result();
                         while ($pet = $res->fetch_object()) {
                         ?>
-                            <div class="col-3">
-                                <div class="card">
+                            <div class="col-3 Pet_details">
+                                <div class="card ">
                                     <img src="../public/img/pets/<?php echo $pet->pet_image; ?>" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <h5 class="card-title">Type: <?php echo $pet->pet_type; ?> </h5><br>
+                                        <h5 class="card-title">Breed: <?php echo $pet->pet_breed; ?></h5><br>
+                                        <h5 class="card-title">Age: <?php echo $pet->pet_age; ?></h5><br>
+                                        <h5 class="card-title">Health Status: <?php echo $pet->pet_health_status; ?></h5>
+
+                                        <p class="card-text">
+                                            <?php echo $pet->pet_description; ?>
+                                        </p>
                                     </div>
                                     <div class="card-footer">
-                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                        <div class="text-center">
+                                            <?php if ($pet->pet_adoption_status != 'Adopted') { ?>
+                                                <a data-toggle="modal" href="#update_<?php echo $pet->pet_id; ?>" class="badge badge-success"><i class="fas fa-hand-holding-heart"></i> Adopt</a>
+                                            <?php } ?>
+                                            <a data-toggle="modal" href="#update_<?php echo $pet->pet_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
+                                            <a data-toggle="modal" href="#update_image_<?php echo $pet->pet_id; ?>" class="badge badge-warning"><i class="fas fa-image"></i> Edit Image</a>
+                                            <a data-toggle="modal" href="#delete_<?php echo $pet->pet_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
