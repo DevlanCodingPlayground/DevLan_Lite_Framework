@@ -369,7 +369,7 @@ require_once('../partials/head.php');
                                                 <div class="row">
                                                     <div class="form-group col-md-8">
                                                         <label for="">Select Pet Adopter</label>
-                                                        <select type="text" required name="pet_adoption_pet_adopter_id " class="form-control select2bs4">
+                                                        <select type="text" required name="pet_adoption_pet_adopter_id" class="form-control select2bs4">
                                                             <option>Select Pet Owner</option>
                                                             <?php
                                                             $adopter_ret = "SELECT * FROM login l
@@ -382,7 +382,7 @@ require_once('../partials/head.php');
                                                                 <option value="<?php echo $adopter->pet_adopter_id; ?>"><?php echo $adopter->pet_adopter_email; ?></option>
                                                             <?php } ?>
                                                         </select>
-                                                        <input type="hidden" name="pet_adoption_pet_id " value="<?php echo $pet->pet_id; ?>">
+                                                        <input type="hidden" name="pet_adoption_pet_id" value="<?php echo $pet->pet_id; ?>">
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="">Adoption Date</label>
