@@ -204,7 +204,7 @@ require_once('../partials/head.php');
                                         <h5 class="card-title">Health Status: <?php echo $pet->pet_health_status; ?></h5>
 
                                         <p class="card-text">
-                                            <?php echo $pet->pet_description; ?>
+                                            <?php echo limit_text($pet->pet_description, 4); ?>
                                         </p>
                                     </div>
                                     <div class="card-footer">
@@ -287,7 +287,7 @@ require_once('../partials/head.php');
                                             <form method="post" enctype="multipart/form-data" role="form">
                                                 <div class="row">
 
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-12">
                                                         <label for="">Pet Image</label>
                                                         <div class="custom-file">
                                                             <input type="hidden" name="pet_id" value="<?php echo $pet->pet_id; ?>">
