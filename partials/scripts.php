@@ -30,6 +30,8 @@
  <script src="../public/js/adminlte.js"></script>
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="../public/js/pages/dashboard.js"></script>
+ <!-- Select2 -->
+ <script src="../public/plugins/select2/js/select2.full.min.js"></script>
  <!-- Data Tables CDN -->
  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
@@ -76,6 +78,18 @@
      $(document).ready(function() {
          $('.table').DataTable();
      });
+     /* Initialize Select2 Elements */
+     $('.select2bs4').select2({
+         theme: 'bootstrap4'
+     })
+     
+
+
+     /* Show File Name */
+     $('input[type="file"]').change(function(e) {
+         var fileName = e.target.files[0].name;
+         $('.custom-file-label').html(fileName);
+     });
 
      $(document).ready(function() {
          $('.report_table').DataTable({
@@ -106,20 +120,20 @@
      });
  </script>
  <script>
-    /* Filter Products */
-    function FilterFunction() {
-      let input = document.getElementById('Pet_Search').value
-      input = input.toLowerCase();
-      let x = document.getElementsByClassName('Pet_details');
-      /* Perform Magic Here */
-      for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-          x[i].style.display = "none";
-        } else if (!x[i].innerHTML.toLowerCase().includes(input)) {
-          x[i].style.display = "none";
-        } else {
-          x[i].style.display = "";
-        }
-      }
-    }
-  </script>
+     /* Filter Products */
+     function FilterFunction() {
+         let input = document.getElementById('Pet_Search').value
+         input = input.toLowerCase();
+         let x = document.getElementsByClassName('Pet_details');
+         /* Perform Magic Here */
+         for (i = 0; i < x.length; i++) {
+             if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                 x[i].style.display = "none";
+             } else if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                 x[i].style.display = "none";
+             } else {
+                 x[i].style.display = "";
+             }
+         }
+     }
+ </script>

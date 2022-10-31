@@ -103,7 +103,7 @@ require_once('../partials/head.php');
                     </div>
                 </div><!-- /.container-fluid -->
                 <!-- Add Pet -->
-                <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade fixed-right" id="add_modal" role="dialog" aria-hidden="true">
                     <div class="modal-dialog  modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
@@ -117,9 +117,9 @@ require_once('../partials/head.php');
                             <div class="modal-body">
                                 <form method="post" enctype="multipart/form-data" role="form">
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-8">
                                             <label for="">Pet Owner</label>
-                                            <select type="text" required name="pet_owner_id" class="form-control">
+                                            <select type="text" required name="pet_owner_id" class="form-control select2bs4">
                                                 <option>Select Pet Owner</option>
                                                 <?php
                                                 $ret = "SELECT * FROM login l
@@ -133,7 +133,7 @@ require_once('../partials/head.php');
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label for="">Pet Type</label>
                                             <input type="text" required name="pet_type" class="form-control">
                                         </div>
@@ -147,7 +147,10 @@ require_once('../partials/head.php');
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="">Health Status</label>
-                                            <input type="text" required name="pet_health_status" class="form-control">
+                                            <select type="text" required name="pet_health_status" class="form-control  select2bs4"> 
+                                                <option>Healthy</option>
+                                                <option>Sick</option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="">Pet Image</label>
@@ -338,7 +341,7 @@ require_once('../partials/head.php');
                                                 <div class="row">
                                                     <div class="form-group col-md-8">
                                                         <label for="">Select Pet Adopter</label>
-                                                        <select type="text" required name="pet_adoption_pet_adopter_id " class="form-control">
+                                                        <select type="text" required name="pet_adoption_pet_adopter_id " class="form-control select2bs4" >
                                                             <option>Select Pet Owner</option>
                                                             <?php
                                                             $adopter_ret = "SELECT * FROM login l
