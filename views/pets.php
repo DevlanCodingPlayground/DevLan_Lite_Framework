@@ -147,14 +147,17 @@ require_once('../partials/head.php');
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="">Health Status</label>
-                                            <select type="text" required name="pet_health_status" class="form-control  select2bs4"> 
+                                            <select type="text" required name="pet_health_status" class="form-control  select2bs4">
                                                 <option>Healthy</option>
                                                 <option>Sick</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="">Pet Image</label>
-                                            <input type="file" required name="pet_image" class="form-control">
+                                            <div class="custom-file">
+                                                <input type="file" required name="pet_image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                                <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="">Pet description</label>
@@ -246,7 +249,15 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="">Health Status</label>
-                                                        <input type="text" required name="pet_health_status" class="form-control" value="<?php echo $pet->pet_health_status; ?>">
+                                                        <select type="text" required name="pet_health_status" class="form-control  select2bs4">
+                                                            <?php if ($pet->pet_health_status == "Healthy") { ?>
+                                                                <option>Healthy</option>
+                                                                <option>Sick</option>
+                                                            <?php } else { ?>
+                                                                <option>Sick</option>
+                                                                <option>Healthy</option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label for="">Pet description</label>
@@ -275,12 +286,15 @@ require_once('../partials/head.php');
                                         <div class="modal-body">
                                             <form method="post" enctype="multipart/form-data" role="form">
                                                 <div class="row">
-                                                    <div class="form-group col-md-12">
-                                                        <label for="">Pet Image</label>
-                                                        <input type="file" required name="pet_image" class="form-control">
-                                                        <input type="hidden" name="pet_id" value="<?php echo $pet->pet_id; ?>">
-                                                    </div>
 
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Pet Image</label>
+                                                        <div class="custom-file">
+                                                            <input type="hidden" name="pet_id" value="<?php echo $pet->pet_id; ?>">
+                                                            <input type="file" required name="pet_image" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                                            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="text-right">
                                                     <button type="submit" name="update_pet_image" class="btn btn-warning">Update Pet Image </button>
@@ -341,7 +355,7 @@ require_once('../partials/head.php');
                                                 <div class="row">
                                                     <div class="form-group col-md-8">
                                                         <label for="">Select Pet Adopter</label>
-                                                        <select type="text" required name="pet_adoption_pet_adopter_id " class="form-control select2bs4" >
+                                                        <select type="text" required name="pet_adoption_pet_adopter_id " class="form-control select2bs4">
                                                             <option>Select Pet Owner</option>
                                                             <?php
                                                             $adopter_ret = "SELECT * FROM login l
