@@ -162,7 +162,7 @@ require_once('../partials/head.php');
                                                     </td>
                                                     <!-- Update Modal -->
                                                     <div class="modal fade fixed-right" id="update_<?php echo $adoption->pet_adoption_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog  modal-xl" role="document">
+                                                        <div class="modal-dialog  modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header align-items-center">
                                                                     <div class="text-bold">
@@ -173,7 +173,20 @@ require_once('../partials/head.php');
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                   
+                                                                    <form method="post" enctype="multipart/form-data" role="form">
+                                                                        <div class="row">
+                                                                            
+                                                                            <div class="form-group col-md-12">
+                                                                                <label for="">Adoption Date</label>
+                                                                                <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
+                                                                                <input type="date" required name="pet_adoption_date" class="form-control" value="<?php echo $adoption->pet_adoption_date; ?>">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="text-right">
+                                                                            <button type="submit" name="update_pet_adoption" class="btn btn-warning">Update Adoption </button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -206,8 +219,8 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <!-- End Modal -->
 
-                                                     <!-- Return Modal -->
-                                                     <div class="modal fade" id="return_<?php echo $adoption->pet_adoption_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <!-- Return Modal -->
+                                                    <div class="modal fade" id="return_<?php echo $adoption->pet_adoption_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -245,7 +258,7 @@ require_once('../partials/head.php');
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                   
+
                                                                 </div>
                                                             </div>
                                                         </div>
