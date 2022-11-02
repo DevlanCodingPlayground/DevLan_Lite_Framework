@@ -98,7 +98,7 @@ require_once('../partials/head.php');
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                     <hr>
-                    
+
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
@@ -130,17 +130,35 @@ require_once('../partials/head.php');
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute(); //ok
                                             $res = $stmt->get_result();
-                                            while ($user = $res->fetch_object()) {
+                                            while ($adoption = $res->fetch_object()) {
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $user->pet_owner_name; ?></td>
-                                                    <td><?php echo $user->pet_owner_email; ?></td>
-                                                    <td><?php echo $user->pet_owner_contacts; ?></td>
-                                                    <td><?php echo $user->pet_owner_address; ?></td>
-                                                    <td><?php echo $user->login_username; ?></td>
                                                     <td>
-                                                        <a data-toggle="modal" href="#update_<?php echo $user->pet_owner_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
-                                                        <a data-toggle="modal" href="#delete_<?php echo $user->pet_owner_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                        Type: <?php echo $adoption->pet_type; ?><br>
+                                                        Health Status: <?php echo $adoption->pet_health_status; ?><br>
+                                                        Age: <?php echo $adoption->pet_age; ?><br>
+                                                    </td>
+                                                    <td>
+                                                        Name: <?php echo $adoption->pet_owner_name; ?><br>
+                                                        Email: <?php echo $adoption->pet_owner_email; ?><br>
+                                                        Contacts: <?php echo $adoption->pet_owner_contacts; ?><br>
+                                                    </td>
+                                                    <td>
+                                                        Name: <?php echo $adoption->pet_adopter_name; ?><br>
+                                                        Email: <?php echo $adoption->pet_adopter_email; ?><br>
+                                                        Contacts: <?php echo $adoption->pet_adopter_phone_number; ?><br>
+                                                    </td>
+                                                    <td>
+                                                        Date: <?php echo date('d M Y', strtotime($adoption->pet_adoption_date)); ?><br>
+                                                        Payment Status: <?php echo $adoption->pet_adoption_payment_status; ?>
+                                                    </td>
+                                                    <td>
+                                                        <a data-toggle="modal" href="#update_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
+                                                        <a data-toggle="modal" href="#return_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-reply"></i> Return</a>
+                                                        <?php if ($adoption->pet_adoption_payment_status == 'Pending') { ?>
+                                                            <a data-toggle="modal" href="#pay_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-hand-holding-usd"></i> Pay</a>
+                                                        <?php } ?>
+                                                        <a data-toggle="modal" href="#delete_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                     </td>
                                                     <!-- Update Modal -->
                                                     <div class="modal fade fixed-right" id="update_<?php echo $user->pet_owner_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -174,7 +192,7 @@ require_once('../partials/head.php');
                                                                                 <label for="">Pet Owner Address</label>
                                                                                 <input type="text" required name="pet_owner_address" value="<?php echo $user->pet_owner_address; ?>" class="form-control">
                                                                             </div>
-                                                                           
+
                                                                         </div>
                                                                         <div class="text-right">
                                                                             <button type="submit" name="Update_PetOwner" class="btn btn-warning">Update Pet Owner</button>
