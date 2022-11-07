@@ -195,9 +195,8 @@ require_once('../partials/head.php');
                         while ($pet = $res->fetch_object()) {
                         ?>
                             <div class="col-3 Pet_details">
-
-                                <div class="card ">
-                                    <?php if ($pet->pet_adoption_status == 'Pending') { ?>
+                                <div class="card">
+                                    <?php if ($pet->pet_adoption_status == 'Available') { ?>
                                         <div class="ribbon-wrapper ribbon-lg">
                                             <div class="ribbon bg-success">
                                                 Available
@@ -210,7 +209,9 @@ require_once('../partials/head.php');
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <img src="../public/img/pets/<?php echo $pet->pet_image; ?>" class="card-img-top" alt="...">
+                                    <div class="card-img-top">
+                                        <img src="../public/img/pets/<?php echo $pet->pet_image; ?>" class="card-img-top pet_image" alt="...">
+                                    </div>
                                     <div class="card-body">
                                         <h5 class="card-title">Type: <?php echo $pet->pet_type; ?> </h5><br>
                                         <h5 class="card-title">Breed: <?php echo $pet->pet_breed; ?></h5><br>

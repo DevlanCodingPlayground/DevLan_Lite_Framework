@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../config/config.php');
+require_once('../config/codeGen.php');
 require_once('../config/checklogin.php');
 require_once('../helpers/adoption.php');
 require_once('../partials/head.php');
@@ -154,8 +155,10 @@ require_once('../partials/head.php');
                                                     </td>
                                                     <td>
                                                         <a data-toggle="modal" href="#update_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
-                                                        <a data-toggle="modal" href="#return_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-reply"></i> Return</a>
-                                                        <?php if ($adoption->pet_adoption_payment_status == 'Pending') { ?>
+                                                        <?php if ($adoption->pet_adoption_return_status != 'Returned') { ?>
+                                                            <a data-toggle="modal" href="#return_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-reply"></i> Return</a>
+                                                        <?php }
+                                                        if ($adoption->pet_adoption_payment_status == 'Pending') { ?>
                                                             <a data-toggle="modal" href="#pay_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-hand-holding-usd"></i> Pay</a>
                                                         <?php } ?>
                                                         <a data-toggle="modal" href="#delete_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
@@ -175,7 +178,7 @@ require_once('../partials/head.php');
                                                                 <div class="modal-body">
                                                                     <form method="post" enctype="multipart/form-data" role="form">
                                                                         <div class="row">
-                                                                            
+
                                                                             <div class="form-group col-md-12">
                                                                                 <label for="">Adoption Date</label>
                                                                                 <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
@@ -211,7 +214,7 @@ require_once('../partials/head.php');
                                                                         <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
                                                                         <input type="hidden" name="pet_id" value="<?php echo $adoption->pet_id; ?>">
                                                                         <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="Delete_PetOwner" value="Delete" class="text-center btn btn-danger">
+                                                                        <input type="submit" name="delete_adoption" value="Delete" class="text-center btn btn-danger">
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -237,7 +240,7 @@ require_once('../partials/head.php');
                                                                         <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
                                                                         <input type="hidden" name="pet_id" value="<?php echo $adoption->pet_id; ?>">
                                                                         <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="Delete_PetOwner" value="Yes, return" class="text-center btn btn-danger">
+                                                                        <input type="submit" name="return_pet" value="Yes, return" class="text-center btn btn-danger">
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -245,21 +248,39 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <!-- End Modal -->
 
-                                                    <!-- Update Modal -->
-                                                    <div class="modal fade fixed-right" id="pay_<?php echo $adoption->pet_adoption_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog  modal-xl" role="document">
+                                                    <!-- Payment Modal -->
+                                                    <div class="modal fade" id="pay_<?php echo $adoption->pet_adoption_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
-                                                                <div class="modal-header align-items-center">
-                                                                    <div class="text-bold">
-                                                                        <h6 class="text-bold">Pay for Pet</h6>
-                                                                    </div>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">CONFIRM PAYMENT</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">
+                                                                        <span>&times;</span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">
+                                                                <form method="POST">
+                                                                    <div class="modal-body">
+                                                                        <h4 class="text-center text-danger">Pay KSH 500 For this adoption ?</h4>
+                                                                        <br>
+                                                                        <!-- Hide This -->
+                                                                        <div class="form-group col-md-12">
+                                                                            <label for="">Payment means</label>
+                                                                            <select type="text" required name="payment_means" class="form-control select2bs4">
+                                                                                <option>Cash</option>
+                                                                                <option>Credit / Debit Card</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="text-center text-danger">
+                                                                            <!-- Hidden Values -->
+                                                                            <input type="hidden" name="payment_pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
+                                                                            <input type="hidden" name="pet_adopter_name" value="<?php echo $adoption->pet_adopter_name; ?>">
+                                                                            <input type="hidden" name="pet_adopter_email" value="<?php echo $adoption->pet_adopter_email; ?>">
 
-                                                                </div>
+                                                                            <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
+                                                                            <input type="submit" name="Add_Payment" value="Yes, Pay" class="text-center btn btn-danger">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>

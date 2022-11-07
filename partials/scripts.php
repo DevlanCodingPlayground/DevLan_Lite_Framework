@@ -1,45 +1,27 @@
- <!-- jQuery -->
- <script src="../public/plugins/jquery/jquery.min.js"></script>
- <!-- jQuery UI 1.11.4 -->
- <script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
- <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
- <script>
-     $.widget.bridge('uibutton', $.ui.button)
- </script>
- <!-- Bootstrap 4 -->
- <script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
- <!-- ChartJS -->
- <script src="../public/plugins/chart.js/Chart.min.js"></script>
- <!-- Sparkline -->
- <script src="../public/plugins/sparklines/sparkline.js"></script>
- <!-- JQVMap -->
- <script src="../public/plugins/jqvmap/jquery.vmap.min.js"></script>
- <script src="../public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
- <!-- jQuery Knob Chart -->
- <script src="../public/plugins/jquery-knob/jquery.knob.min.js"></script>
- <!-- daterangepicker -->
- <script src="../public/plugins/moment/moment.min.js"></script>
- <script src="../public/plugins/daterangepicker/daterangepicker.js"></script>
- <!-- Tempusdominus Bootstrap 4 -->
- <script src="../public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
- <!-- Summernote -->
- <script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
- <!-- overlayScrollbars -->
- <script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
- <!-- AdminLTE App -->
- <script src="../public/js/adminlte.js"></script>
- <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
- <script src="../public/js/pages/dashboard.js"></script>
- <!-- Select2 -->
- <script src="../public/plugins/select2/js/select2.full.min.js"></script>
- <!-- Data Tables CDN -->
- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<!-- jQuery -->
+<script src="../public/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../public/js/adminlte.js"></script>
+<!-- Mo Js -->
+<script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+<!-- Select2 -->
+<script src="../public/plugins/select2/js/select2.full.min.js"></script>
+
+<!-- Load Data Tables Plug Ins -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+<!-- Boxlight -->
+<script src="../public/plugins/boxlight/js/jquery.blImageCenter.js"></script>
  <!-- Toastr -->
  <script src="../public/plugins/toastr/toastr.min.js"></script>
  <!-- Init  Alerts -->
@@ -70,6 +52,7 @@
      }
  </script>
  <script>
+    
      /* Init Tool Tip Js */
      $(function() {
          $('[data-toggle="tooltip"]').tooltip()
@@ -82,8 +65,8 @@
      $('.select2bs4').select2({
          theme: 'bootstrap4'
      })
-     
 
+     $('.pet_imag').centerImage();
 
      /* Show File Name */
      $('input[type="file"]').change(function(e) {
