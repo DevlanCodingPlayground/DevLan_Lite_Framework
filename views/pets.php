@@ -195,9 +195,8 @@ require_once('../partials/head.php');
                         while ($pet = $res->fetch_object()) {
                         ?>
                             <div class="col-3 Pet_details">
-
-                                <div class="card ">
-                                    <?php if ($pet->pet_adoption_status == 'Pending') { ?>
+                                <div class="card">
+                                    <?php if ($pet->pet_adoption_status == 'Available') { ?>
                                         <div class="ribbon-wrapper ribbon-lg">
                                             <div class="ribbon bg-success">
                                                 Available

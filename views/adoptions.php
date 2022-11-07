@@ -154,8 +154,10 @@ require_once('../partials/head.php');
                                                     </td>
                                                     <td>
                                                         <a data-toggle="modal" href="#update_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-edit"></i> Edit</a>
-                                                        <a data-toggle="modal" href="#return_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-reply"></i> Return</a>
-                                                        <?php if ($adoption->pet_adoption_payment_status == 'Pending') { ?>
+                                                        <?php if ($adoption->pet_adoption_return_status != 'Returned') { ?>
+                                                            <a data-toggle="modal" href="#return_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-reply"></i> Return</a>
+                                                        <?php }
+                                                        if ($adoption->pet_adoption_payment_status == 'Pending') { ?>
                                                             <a data-toggle="modal" href="#pay_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-primary"><i class="fas fa-hand-holding-usd"></i> Pay</a>
                                                         <?php } ?>
                                                         <a data-toggle="modal" href="#delete_<?php echo $adoption->pet_adoption_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
