@@ -213,7 +213,7 @@ require_once('../partials/head.php');
                                                                         <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
                                                                         <input type="hidden" name="pet_id" value="<?php echo $adoption->pet_id; ?>">
                                                                         <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="Delete_PetOwner" value="Delete" class="text-center btn btn-danger">
+                                                                        <input type="submit" name="delete_adoption" value="Delete" class="text-center btn btn-danger">
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -247,7 +247,7 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <!-- End Modal -->
 
-                                                    <!-- Update Modal -->
+                                                    <!-- Payment Modal -->
                                                     <div class="modal fade" id="pay_<?php echo $adoptions->pet_adoption_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">

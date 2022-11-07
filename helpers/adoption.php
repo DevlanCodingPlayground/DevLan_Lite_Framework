@@ -31,3 +31,18 @@ if(isset($_POST['return_pet'])){
 //pay
 
 //delete
+if(isset($_POST['delete_adoption'])){
+    $pet_adoption_id = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_id']);
+    $pet_id = mysqli_real_escape_string($mysqli, $_POST['pet_id']);
+
+    $delete_sql = "DELETE FROM pet_adoption WHERE pet_adoption_id = '{$pet_adoption_id}'";
+    $update_pet_sql = "UPDATE pet SET pet_adoption_status= 'Available' WHERE pet_id = '{$pet_id}'";
+
+
+    if (mysqli_query($mysqli, $delete_sql) && mysqli_query($mysqli, $update_pet_sql) ) {
+        $success = "Pet adoption record deleted";
+    } else {
+        $err = "Sorry.failed to update adoption record.";
+    }
+
+}
