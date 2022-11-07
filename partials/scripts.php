@@ -1,5 +1,7 @@
  <!-- jQuery -->
  <script src="../public/plugins/jquery/jquery.min.js"></script>
+ <script src="../public/plugins/boxlight/js/jquery.blImageCenter.js"></script>
+
  <!-- jQuery UI 1.11.4 -->
  <script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -70,6 +72,7 @@
      }
  </script>
  <script>
+     $('.pet_imag').centerImage();
      /* Init Tool Tip Js */
      $(function() {
          $('[data-toggle="tooltip"]').tooltip()
@@ -82,7 +85,7 @@
      $('.select2bs4').select2({
          theme: 'bootstrap4'
      })
-     
+
 
 
      /* Show File Name */
