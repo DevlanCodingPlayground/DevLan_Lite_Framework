@@ -7,7 +7,7 @@ if (isset($_POST['add_pet'])) {
     $pet_age = mysqli_real_escape_string($mysqli, $_POST['pet_age']);
     $pet_health_status = mysqli_real_escape_string($mysqli, $_POST['pet_health_status']);
     $pet_description = mysqli_real_escape_string($mysqli, $_POST['pet_description']);
-   // $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
+    // $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
 
     $pet_image = mysqli_real_escape_string($mysqli, $_FILES["pet_image"]["name"]);
     $tempname = $_FILES["pet_image"]["tmp_name"];
@@ -31,7 +31,7 @@ if (isset($_POST['update_pet'])) {
     $pet_age = mysqli_real_escape_string($mysqli, $_POST['pet_age']);
     $pet_health_status = mysqli_real_escape_string($mysqli, $_POST['pet_health_status']);
     $pet_description = mysqli_real_escape_string($mysqli, $_POST['pet_description']);
-  //  $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
+    //  $pet_adoption_staus = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_status']);
 
     $update_sql = "UPDATE pet SET pet_type='{$pet_type}', pet_breed='{$pet_breed}', pet_age='{$pet_age}', pet_health_status='{$pet_health_status}', pet_description='{$pet_description}' WHERE pet_id='{$pet_id}' ";
     if (mysqli_query($mysqli, $update_sql)) {
@@ -72,13 +72,14 @@ if (isset($_POST['delete_pet'])) {
 
 //adoption
 if (isset($_POST['adopt_pet'])) {
-    $pet_adoption_pet_id= mysqli_real_escape_string($mysqli, $_POST['pet_adoption_pet_id']);
-    $pet_adoption_pet_adopter_id= mysqli_real_escape_string($mysqli, $_POST['pet_adoption_pet_adopter_id']);
-    $pet_adoption_date= mysqli_real_escape_string($mysqli, $_POST['pet_adoption_date']);
+    $pet_adoption_pet_id = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_pet_id']);
+    $pet_adoption_pet_adopter_id = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_pet_adopter_id']);
+    $pet_adoption_date = mysqli_real_escape_string($mysqli, $_POST['pet_adoption_date']);
+    $pet_adoption_ref = mysqli_real_escape_string($mysqli, 'ADP-' . $a . '-' . $b);
 
 
-    $insert_sql = "INSERT INTO pet_adoption (pet_adoption_pet_id,  pet_adoption_pet_adopter_id, pet_adoption_date)
-    VALUES ('{$pet_adoption_pet_id}', '{$pet_adoption_pet_adopter_id}', '{$pet_adoption_date}' )";
+    $insert_sql = "INSERT INTO pet_adoption (pet_adoption_pet_id,  pet_adoption_pet_adopter_id, pet_adoption_date, pet_adoption_ref)
+    VALUES ('{$pet_adoption_pet_id}', '{$pet_adoption_pet_adopter_id}', '{$pet_adoption_date}', '{$pet_adoption_ref}' )";
     $update_sql = "UPDATE pet SET pet_adoption_status='Adopted' WHERE pet_id='{$pet_adoption_pet_id}'";
 
 
