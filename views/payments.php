@@ -140,35 +140,49 @@ require_once('../partials/head.php');
                                                         <?php echo $payment->payment_ref; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $payment->pet_adoption_ref; ?>
+                                                        <a data-toggle="modal" href="#adoption_<?php echo $payment->pet_adoption_ref; ?>">
+                                                            <?php echo $payment->pet_adoption_ref; ?>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         Ksh <?php echo number_format($payment->payment_amount, 2); ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo date('d M Y g:ia',strtotime($payment->payment_date)); ?>
+                                                        <?php echo date('d M Y g:ia', strtotime($payment->payment_date)); ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $payment->payment_means; ?>
                                                     </td>
                                                     <td>
 
-                                                        <a data-toggle="modal" href="#delete_<?php echo $payment->payment_; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                        <a data-toggle="modal" href="#delete_<?php echo $payment->payment_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
                                                     </td>
                                                     <!-- Update Modal -->
-                                                    <div class="modal fade fixed-right" id="update_<?php echo $adoption->pet_adoption_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal fade fixed-right" id="adoption_<?php echo $payment->pet_adoption_ref; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog  modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header align-items-center">
                                                                     <div class="text-bold">
-                                                                        <h6 class="text-bold">Update Pet Adoption Record</h6>
+                                                                        <h6 class="text-bold">Pet Adoption Details</h6>
                                                                     </div>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-
+                                                                    <p>
+                                                                        Pet Type: <?php echo $payment->pet_type; ?><br>
+                                                                        Pet Health Status: <?php echo $payment->pet_health_status; ?><br>
+                                                                        Pet Age: <?php echo $payment->pet_age; ?><br>
+                                                                        Pet Owner Name: <?php echo $payment->pet_owner_name; ?><br>
+                                                                        Pet Owner Email: <?php echo $payment->pet_owner_email; ?><br>
+                                                                        Pet Owner Contacts: <?php echo $payment->pet_owner_contacts; ?><br>
+                                                                        Pet Adopter Name: <?php echo $payment->pet_adopter_name; ?><br>
+                                                                        Pet Adopter Email: <?php echo $payment->pet_adopter_email; ?><br>
+                                                                        Pet Adopter Contacts: <?php echo $payment->pet_adopter_phone_number; ?><br>
+                                                                        Adoption Date: <?php echo date('d M Y', strtotime($payment->pet_adoption_date)); ?><br>
+                                                                        Adoption Payment Status: <?php echo $payment->pet_adoption_payment_status; ?>
+                                                                    </p>~
                                                                 </div>
                                                             </div>
                                                         </div>
