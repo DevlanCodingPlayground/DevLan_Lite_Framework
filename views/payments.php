@@ -182,7 +182,7 @@ require_once('../partials/head.php');
                                                                         Pet Adopter Contacts: <?php echo $payment->pet_adopter_phone_number; ?><br>
                                                                         Adoption Date: <?php echo date('d M Y', strtotime($payment->pet_adoption_date)); ?><br>
                                                                         Adoption Payment Status: <?php echo $payment->pet_adoption_payment_status; ?>
-                                                                    </p>~
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
