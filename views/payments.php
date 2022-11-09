@@ -176,7 +176,7 @@ require_once('../partials/head.php');
                                                     <!-- End Modal -->
 
                                                     <!-- Delete Modal -->
-                                                    <div class="modal fade" id="delete_<?php echo $adoption->pet_adoption_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="delete_<?php echo $payment->payment_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -190,10 +190,10 @@ require_once('../partials/head.php');
                                                                         <h4>Delete?</h4>
                                                                         <br>
                                                                         <!-- Hide This -->
-                                                                        <input type="hidden" name="pet_adoption_id" value="<?php echo $adoption->pet_adoption_id; ?>">
-                                                                        <input type="hidden" name="pet_id" value="<?php echo $adoption->pet_id; ?>">
+                                                                        <input type="hidden" name="pet_adoption_id" value="<?php echo $payment->pet_adoption_id; ?>">
+                                                                        <input type="hidden" name="payment_id" value="<?php echo $payment->payment_id; ?>">
                                                                         <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="delete_adoption" value="Delete" class="text-center btn btn-danger">
+                                                                        <input type="submit" name="delete_payment" value="Delete" class="text-center btn btn-danger">
                                                                     </div>
                                                                 </form>
                                                             </div>
