@@ -50,59 +50,7 @@ if (isset($_POST['Add_Payment'])) {
         }
     } else if ($payment_means == 'Credit / Debit Card') {
         /* Handle Credit/Debit Card - To Avoid Messy Codebases Just Include The File Here */
-        // include('../api/flutterwave/process_payment.php');
-
-        /* Prepare Fluterwave RAVE API Request */
-        $request = [
-            'tx_ref' => $payment_ref,
-            'amount' => $payment_amount,
-            'currency' => 'KES',
-            'payment_options' => 'card',
-            /* Update This URL To Match Your Needs */
-            'redirect_url' => 'http://127.0.0.1/iPet/views/payment_response.php?adoption=' . $payment_pet_adoption_id,
-            'customer' => [
-                'email' => $pet_adopter_email,
-                'name' => $pet_adopter_name,
-            ],
-            'meta' => [
-                'price' => $payment_amount
-            ],
-            'customizations' => [
-                'title' => 'Pet Adoption Payment',
-                'description' => $pet_adopter_name . 'Pet Adoption Payment'
-            ]
-        ];
-
-        /* Call Flutterwave Endpoint */
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.flutterwave.com/v3/payments',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => json_encode($request),
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer FLWSECK_TEST-a90855faf858298f0b14bfb4621e53fe-X', /* To Do : Never hard code this bearer */
-                'Content-Type: application/json'
-            ),
-        ));
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-
-        $res = json_decode($response);
-        if ($res->status == 'success') {
-            $link = $res->data->link;
-            header('Location: ' . $link);
-        } else {
-            $err =  'We can not process your payment';
-        }
+        include('../api/flutterwave/process_payment.php');
     } else {
         /* Handle Mobile Payments - To Avoid Messy Codebases Just Include The File Here */
         $err = "Payment method is not supported";

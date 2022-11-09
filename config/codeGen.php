@@ -86,7 +86,7 @@ $length = 12;
 $checksum = bin2hex(random_bytes($length));
 
 // ---Codes----------------------------------------------------------------//
-$alpha = 1;
+$alpha = 4;
 $beta = 4;
 $a = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM"), 1, $alpha);
 $b = substr(str_shuffle("1234567890"), 1, $beta);
