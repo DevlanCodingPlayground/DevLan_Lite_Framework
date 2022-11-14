@@ -99,6 +99,7 @@ require_once('../partials/head.php');
                     </div><!-- /.row -->
                     <hr>
                     <div class="text-right">
+                        <a href="generate_reports?module=Owners" class="btn btn-primary">Download Records</a>
                         <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-warning"> Add Pet Owner</button>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -224,7 +225,7 @@ require_once('../partials/head.php');
                                                                                 <label for="">Pet Owner Address</label>
                                                                                 <input type="text" required name="pet_owner_address" value="<?php echo $user->pet_owner_address; ?>" class="form-control">
                                                                             </div>
-                                                                           
+
                                                                         </div>
                                                                         <div class="text-right">
                                                                             <button type="submit" name="Update_PetOwner" class="btn btn-warning">Update Pet Owner</button>
