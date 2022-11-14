@@ -99,6 +99,7 @@ require_once('../partials/head.php');
                     </div><!-- /.row -->
                     <hr>
                     <div class="text-right">
+                        <a href="generate_reports?module=Staffs" class="btn btn-primary">Download Records</a>
                         <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-warning"> Add Staff</button>
                     </div>
                 </div><!-- /.container-fluid -->

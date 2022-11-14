@@ -98,8 +98,10 @@ require_once('../partials/head.php');
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
+                    <div class="text-right">
+                        <a href="generate_reports?module=Payment" class="btn btn-primary">Download Records</a>
+                    </div>
                     <hr>
-
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
