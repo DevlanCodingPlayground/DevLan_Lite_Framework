@@ -188,9 +188,19 @@ require_once('../partials/head.php');
                     </div>
 
                     <!-- Info boxes -->
-                    <div class="row">
+                   <!-- Info boxes -->
+                   <div class="row">
                         <?php
-                        $ret = "SELECT * FROM pet p INNER JOIN pet_owner po ON p.pet_owner_id = po.pet_owner_id";
+                        $per_page_record = 4;
+                        if (isset($_GET["page"])) {
+                            $page  = $_GET["page"];
+                        } else {
+                            $page = 1;
+                        }
+                        $start_from = ($page - 1) * $per_page_record;
+                        $ret = "SELECT * FROM pet p 
+                        INNER JOIN pet_owner po ON p.pet_owner_id = po.pet_owner_id
+                        LIMIT $start_from, $per_page_record ";
                         $stmt = $mysqli->prepare($ret);
                         $stmt->execute(); //ok
                         $res = $stmt->get_result();
@@ -266,12 +276,12 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="">Health Status</label>
-                                                        <select type="text" required name="pet_health_status" class="form-control  select2bs4">
-                                                            <?php if ($pet->pet_health_status == "Healthy") { ?>
+                                                        <select type="text" required name="pet_health_status" class="form-control select2bs4">
+                                                            <?php if ($pet->pet_health_status == 'Healthy') { ?>
                                                                 <option>Healthy</option>
-                                                                <option>Sick</option>
+                                                                <option>Ill</option>
                                                             <?php } else { ?>
-                                                                <option>Sick</option>
+                                                                <option>Ill</option>
                                                                 <option>Healthy</option>
                                                             <?php } ?>
                                                         </select>
@@ -289,6 +299,7 @@ require_once('../partials/head.php');
                                     </div>
                                 </div>
                             </div>
+
                             <div class="modal fade fixed-right" id="update_image_<?php echo $pet->pet_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog  modal-lg" role="document">
                                     <div class="modal-content">
@@ -303,7 +314,6 @@ require_once('../partials/head.php');
                                         <div class="modal-body">
                                             <form method="post" enctype="multipart/form-data" role="form">
                                                 <div class="row">
-
                                                     <div class="form-group col-md-12">
                                                         <label for="">Pet Image</label>
                                                         <div class="custom-file">
@@ -349,7 +359,7 @@ require_once('../partials/head.php');
                             <!-- End Modal -->
                             <!-- adopt modal -->
                             <div class="modal fade fixed-right" id="adopt_<?php echo $pet->pet_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog  modal-xl" role="document">
+                                <div class="modal-dialog  modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header align-items-center">
                                             <div class="text-bold">
@@ -360,11 +370,14 @@ require_once('../partials/head.php');
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="text-center">
+                                            <div class="d-flex justify-content-between">
                                                 <h5>
-                                                    Pet Owner Name: <?php echo $pet->pet_owner_name; ?> <br>
-                                                    Contacts:<?php echo $pet->pet_owner_contacts; ?> <br>
-                                                    Email: <?php echo $pet->pet_owner_email; ?>
+                                                    <b>Owner Name: </b> <?php echo $pet->pet_owner_name; ?> <br>
+                                                    <b>Contacts: </b><?php echo $pet->pet_owner_contacts; ?>
+                                                </h5>
+                                                <h5>
+                                                    <b>Email: </b> <?php echo $pet->pet_owner_email; ?><br>
+                                                    <b> Address: </b> <?php echo $pet->pet_owner_address; ?> <br>
                                                 </h5>
                                             </div>
                                             <hr>
@@ -373,7 +386,7 @@ require_once('../partials/head.php');
                                                     <div class="form-group col-md-8">
                                                         <label for="">Select Pet Adopter</label>
                                                         <select type="text" required name="pet_adoption_pet_adopter_id" class="form-control select2bs4">
-                                                            <option>Select Pet Owner</option>
+                                                            <option>Select Pet Adopter</option>
                                                             <?php
                                                             $adopter_ret = "SELECT * FROM login l
                                                              INNER JOIN pet_adopter pa ON pa.pet_adopter_login_id  = l.login_id";
@@ -403,8 +416,40 @@ require_once('../partials/head.php');
                             </div>
                             <!-- end modal -->
                         <?php } ?>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <?php
+                                $query = "SELECT COUNT(*) FROM pet";
+                                $rs_result = mysqli_query($mysqli, $query);
+                                $row = mysqli_fetch_row($rs_result);
+                                $total_records = $row[0];
 
+                                $total_pages = ceil($total_records / $per_page_record);
+                                $pagLink = "";
 
+                                if ($page >= 2) {
+                                    echo "<li class='page-item'><a class='page-link' href='pets?page=" . ($page - 1) . "'>Previous</a></li>";
+                                }
+
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    if ($i == $page) {
+                                        $pagLink .= "<li class='page-item active'><a class = 'active page-link' href='pets?page=" . $i . "'>" . $i . " </a></li>";
+                                    } else {
+                                        $pagLink .= "<li class='page-item'><a class='page-link' href='pets?page=" . $i . "'>" . $i . " </a></li>";
+                                    }
+                                };
+                                echo $pagLink;
+
+                                if ($page < $total_pages) {
+                                    echo "<li class='page-item'><a class='page-link'  href='pets?page=" . ($page + 1) . "'>  Next </a></li>";
+                                }
+
+                                ?>
+
+                            </ul>
+                        </nav>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
