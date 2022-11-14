@@ -99,7 +99,7 @@ require_once('../partials/head.php');
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                     <div class="text-right">
-                        <a href="generate_reports?module=Adpotions" class="btn btn-primary">Download Records</a>
+                        <a href="generate_reports?module=Adoptions" class="btn btn-primary">Download Records</a>
                     </div>
                     <hr>
 
