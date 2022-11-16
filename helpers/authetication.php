@@ -21,11 +21,11 @@ if (isset($_POST['Login'])) {
         $_SESSION['success'] = 'You Have Successfully Logged In';
         header('Location: dashboard');
         exit;
-    } elseif ($rs && $user_access_level == "owner") {
+    } elseif ($rs && $login_rank == "Owner") {
         $_SESSION['success'] = 'Successfully logged in as pet owner';
-        header('Location: owner_dashboard');
+        header('Location: pet_owner_dashboard');
         exit;
-    } elseif ($rs && $user_access_level == "adopter") {
+    } elseif ($rs && $login_rank == "Adopter") {
         $_SESSION['success'] = 'Successfully logged in as pet adopter';
         header('Location: adopter_dashboard');
         exit;
