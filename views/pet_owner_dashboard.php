@@ -64,7 +64,7 @@ require_once('../partials/head.php');
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3><?php echo $pet_adoptions; ?></h3>
+                                    <h3><?php echo $adopted_pets; ?></h3>
                                     <p>Successful Adoptions</p>
                                 </div>
                                 <div class="icon">
