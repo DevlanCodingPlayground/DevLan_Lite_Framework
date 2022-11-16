@@ -2,7 +2,7 @@
 session_start();
 require_once('../config/config.php');
 require_once('../config/checklogin.php');
-require_once('../functions/pet_owner_analytics.php');
+require_once('../functions/pet_owner_anlytics.php');
 require_once('../partials/head.php');
 ?>
 
