@@ -81,11 +81,11 @@ if(isset($_POST['Update_PetOwner_Password'])){
 
     //Check If passwords match
     if($new_password != $confirm_password){
-        $err = "Passwords does not match";
+        $err = "Password does not match";
     }else{
         $sql = "UPDATE login SET login_username = '{$login_username}', login_password = '{$confirm_password}' WHERE login_id = '{$login_id}'";
         if(mysqli_query($mysqli, $sql)){
-            $success="Passwords updated";
+            $success="Password updated";
         }else{
             $err = "Please try again later";
         }
