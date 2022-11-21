@@ -120,7 +120,7 @@ require_once('../partials/head.php');
                                                 <th>Payment Amount</th>
                                                 <th>Date</th>
                                                 <th>Mode of Payment</th>
-                                                <th>Manage</th>
+                                           
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -155,10 +155,6 @@ require_once('../partials/head.php');
                                                     <td>
                                                         <?php echo $payment->payment_means; ?>
                                                     </td>
-                                                    <td>
-
-                                                        <a data-toggle="modal" href="#delete_<?php echo $payment->payment_id; ?>" class="badge badge-danger"><i class="fas fa-trash"></i> Delete</a>
-                                                    </td>
                                                     <!-- Update Modal -->
                                                     <div class="modal fade fixed-right" id="adoption_<?php echo $payment->pet_adoption_ref; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog  modal-lg" role="document">
@@ -190,33 +186,6 @@ require_once('../partials/head.php');
                                                         </div>
                                                     </div>
                                                     <!-- End Modal -->
-
-                                                    <!-- Delete Modal -->
-                                                    <div class="modal fade" id="delete_<?php echo $payment->payment_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal">
-                                                                        <span>&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <form method="POST">
-                                                                    <div class="modal-body text-center text-danger">
-                                                                        <h4>Delete?</h4>
-                                                                        <br>
-                                                                        <!-- Hide This -->
-                                                                        <input type="hidden" name="pet_adoption_id" value="<?php echo $payment->pet_adoption_id; ?>">
-                                                                        <input type="hidden" name="payment_id" value="<?php echo $payment->payment_id; ?>">
-                                                                        <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                                                                        <input type="submit" name="delete_payment" value="Delete" class="text-center btn btn-danger">
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Modal -->
-
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
