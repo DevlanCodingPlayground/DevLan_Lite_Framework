@@ -27,7 +27,18 @@ require_once('../partials/head.php');
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Pet Owner Dashboard</h1>
+                            <?php
+                            $pet_owner_login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
+                            $ret = "SELECT * FROM login l
+                            INNER JOIN pet_owner po ON po.pet_owner_login_id  = l.login_id
+                            WHERE login_id = '{$pet_owner_login_id}'";
+                            $stmt = $mysqli->prepare($ret);
+                            $stmt->execute(); //ok
+                            $res = $stmt->get_result();
+                            while ($user = $res->fetch_object()) {
+                            ?>
+                                <h1 class="m-0">Hey, <?php echo $user->pet_owner_name; ?></h1>
+                            <?php } ?>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
