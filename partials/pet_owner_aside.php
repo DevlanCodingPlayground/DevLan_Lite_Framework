@@ -44,6 +44,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="pet_owner_profile" class="nav-link">
+                        <i class="nav-icon fas fa-user-edit"></i>
+                        <p>
+                            Profile Settings
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
