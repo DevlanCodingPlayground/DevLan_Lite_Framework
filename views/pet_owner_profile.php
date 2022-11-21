@@ -160,6 +160,25 @@ require_once('../partials/head.php');
                                         <h3 class="text-center">Authentication Information</h3>
                                     </div>
                                     <div class="card-body">
+                                        <form method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                            <div class="form-group col-md-6">
+                                                    <label for="">Username</label>
+                                                    <input type="text" required name="login_username" value="<?php echo $user->login_username; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">New Password</label>
+                                                    <input type="password" required name="new_password" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="">Confirm password</label>
+                                                    <input type="password" required name="confirm_password" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Update_PetOwner_Password" class="btn btn-warning">Update Password</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
