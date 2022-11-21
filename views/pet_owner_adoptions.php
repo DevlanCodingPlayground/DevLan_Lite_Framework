@@ -125,10 +125,12 @@ require_once('../partials/head.php');
                                         </thead>
                                         <tbody>
                                             <?php
+                                            $pet_owner_login_id =mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
                                             $ret = "SELECT * FROM pet_adoption pa
                                             INNER JOIN pet p ON p.pet_id = pa.pet_adoption_pet_id
                                             INNER JOIN pet_adopter pad ON pad.pet_adopter_id = pa.pet_adoption_pet_adopter_id 
-                                            INNER JOIN pet_owner po ON po.pet_owner_id = p.pet_owner_id";
+                                            INNER JOIN pet_owner po ON po.pet_owner_id = p.pet_owner_id
+                                            WHERE po.pet_owner_login_id = '{$pet_owner_login_id}'";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute(); //ok
                                             $res = $stmt->get_result();
