@@ -128,7 +128,7 @@ require_once('../partials/head.php');
                                             INNER JOIN pet p ON p.pet_id = pa.pet_adoption_pet_id
                                             INNER JOIN pet_adopter pad ON pad.pet_adopter_id = pa.pet_adoption_pet_adopter_id 
                                             INNER JOIN pet_owner po ON po.pet_owner_id = p.pet_owner_id
-                                            WHERE pa.pet_adopter_login_id ='{$_SESSION['login_id']}'";
+                                            WHERE pad.pet_adopter_login_id ='{$_SESSION['login_id']}'";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->execute(); //ok
                                             $res = $stmt->get_result();
@@ -153,8 +153,35 @@ require_once('../partials/head.php');
                                                         <?php echo $payment->payment_means; ?>
                                                     </td>
 
-
-
+                                                    <div class="modal fade fixed-right" id="adoption_<?php echo $payment->pet_adoption_ref; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog  modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header align-items-center">
+                                                                    <div class="text-bold">
+                                                                        <h6 class="text-bold">Pet Adoption Details</h6>
+                                                                    </div>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>
+                                                                        Pet Type: <?php echo $payment->pet_type; ?><br>
+                                                                        Pet Health Status: <?php echo $payment->pet_health_status; ?><br>
+                                                                        Pet Age: <?php echo $payment->pet_age; ?><br>
+                                                                        Pet Owner Name: <?php echo $payment->pet_owner_name; ?><br>
+                                                                        Pet Owner Email: <?php echo $payment->pet_owner_email; ?><br>
+                                                                        Pet Owner Contacts: <?php echo $payment->pet_owner_contacts; ?><br>
+                                                                        Pet Adopter Name: <?php echo $payment->pet_adopter_name; ?><br>
+                                                                        Pet Adopter Email: <?php echo $payment->pet_adopter_email; ?><br>
+                                                                        Pet Adopter Contacts: <?php echo $payment->pet_adopter_phone_number; ?><br>
+                                                                        Adoption Date: <?php echo date('d M Y', strtotime($payment->pet_adoption_date)); ?><br>
+                                                                        Adoption Payment Status: <?php echo $payment->pet_adoption_payment_status; ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
