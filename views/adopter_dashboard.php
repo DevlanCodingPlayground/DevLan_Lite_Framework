@@ -57,7 +57,7 @@ require_once('../partials/head.php');
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
@@ -67,11 +67,11 @@ require_once('../partials/head.php');
                                 <div class="icon">
                                     <i class="fas fa-cat"></i>
                                 </div>
-                                <a href="pets" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="pet_adopter_pets" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
@@ -81,13 +81,13 @@ require_once('../partials/head.php');
                                 <div class="icon">
                                     <i class="fas fa-paw"></i>
                                 </div>
-                                <a href="adoptions" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="pet_adopter_adoptions" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
 
                         
 
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
@@ -97,7 +97,7 @@ require_once('../partials/head.php');
                                 <div class="icon">
                                     <i class="fas fa-hand-holding-usd"></i>
                                 </div>
-                                <a href="payments" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="pet_adopter_payments" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->

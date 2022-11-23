@@ -37,10 +37,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pet_adopter_payments" class="nav-link">
+                    <a href="pet_adopter_expenditure" class="nav-link">
                         <i class="nav-icon fas fa-hand-holding-usd"></i>
                         <p>
-                            Payments
+                            Expenditure
                         </p>
                     </a>
                 </li>
