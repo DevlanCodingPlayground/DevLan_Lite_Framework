@@ -61,11 +61,32 @@ if (isset($_POST['update_pet_adopter'])) {
 //delete pet adopter
 if (isset($_POST['delete_pet_adopter'])) {
     $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
-    $delete_sql= "DELETE FROM login WHERE login_id = '{$login_id}'";
+    $delete_sql = "DELETE FROM login WHERE login_id = '{$login_id}'";
 
     if (mysqli_query($mysqli, $delete_sql)) {
         $success = "Pet Adopter is sucessfully deleted!";
     } else {
         $err = "Failed saving login information, please try again";
+    }
+}
+
+//change passwrd
+
+if (isset($_POST['Update_Pet_adopter_Password'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
+    $new_password = md5(mysqli_real_escape_string($mysqli, $_POST['new_password']));
+    $confirm_password = md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password']));
+    $login_username = mysqli_real_escape_string($mysqli, $_POST['login_username']);
+
+    //Check If passwords match
+    if ($new_password != $confirm_password) {
+        $err = "Password does not match";
+    } else {
+        $sql = "UPDATE login SET login_username = '{$login_username}', login_password = '{$confirm_password}' WHERE login_id = '{$login_id}'";
+        if (mysqli_query($mysqli, $sql)) {
+            $success = "Password updated";
+        } else {
+            $err = "Please try again later";
+        }
     }
 }
