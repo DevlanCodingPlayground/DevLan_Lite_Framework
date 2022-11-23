@@ -56,41 +56,13 @@ require_once('../partials/head.php');
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?php echo $pet_owners; ?></h3>
-
-                                    <p>Pet Owners</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <a href="pet_owners" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?php echo $pet_adopters; ?></h3>
-                                    <p>Pet Adopters</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-user-tag"></i>
-                                </div>
-                                <a href="pet_adopters" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3><?php echo $pets; ?></h3>
-                                    <p>Registered Pets</p>
+                                    <h3><?php echo $available_pets; ?></h3>
+                                    <p>Available Pets</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-cat"></i>
@@ -103,8 +75,8 @@ require_once('../partials/head.php');
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3><?php echo $pet_adoptions; ?></h3>
-                                    <p>Successful Adoptions</p>
+                                    <h3><?php echo $adopted_pets; ?></h3>
+                                    <p> Adoptions</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-paw"></i>
@@ -112,26 +84,15 @@ require_once('../partials/head.php');
                                 <a href="adoptions" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3><?php echo $available_pets; ?></h3>
-                                    <p>Available Pets</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-dog"></i>
-                                </div>
-                                <a href="pets" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
+
+                        
 
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>Ksh <?php echo number_format($payment_amount, 2); ?></h3>
-                                    <p>Payments</p>
+                                    <h3>Ksh <?php echo number_format($expenditure, 2); ?></h3>
+                                    <p>Expenditure</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-hand-holding-usd"></i>
