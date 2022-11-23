@@ -2,7 +2,7 @@
 session_start();
 require_once('../config/config.php');
 require_once('../config/checklogin.php');
-require_once('../functions/adminstrator_analytics.php');
+require_once('../functions/pet_adopter_analytics.php');
 require_once('../partials/head.php');
 ?>
 
@@ -19,7 +19,7 @@ require_once('../partials/head.php');
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php require_once('../partials/aside.php'); ?>
+        <?php require_once('../partials/pet_adopter_aside.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -27,12 +27,23 @@ require_once('../partials/head.php');
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <?php
+                            $pet_adopter_login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
+                            $ret = "SELECT * FROM login l
+                            INNER JOIN pet_adopter pa ON pa.pet_adopter_login_id  = l.login_id
+                            WHERE login_id = '{$pet_adopter_login_id}'";
+                            $stmt = $mysqli->prepare($ret);
+                            $stmt->execute(); //ok
+                            $res = $stmt->get_result();
+                            while ($user = $res->fetch_object()) {
+                            ?>
+                                <h1 class="m-0">Hey, <?php echo $user->pet_adopter_name; ?></h1>
+                            <?php } ?>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item active">Pet Adopter Dashboard </li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -136,7 +147,7 @@ require_once('../partials/head.php');
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-      
+
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
