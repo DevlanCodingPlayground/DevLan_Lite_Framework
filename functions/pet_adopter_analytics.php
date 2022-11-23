@@ -30,7 +30,7 @@ while ($user = $res->fetch_object()) {
     //3.Expenditure
     $query = "SELECT SUM(payment_amount)  FROM payment p
     INNER JOIN pet_adoption pa ON pa.pet_adoption_id = p.payment_pet_adoption_id
-    WHERE pa.pet_adopter_id = '{$adopter_id}'";
+    WHERE pa.pet_adoption_pet_adopter_id = '{$adopter_id}'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($expenditure);
