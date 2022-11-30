@@ -72,11 +72,24 @@
 function check_login()
 {
 	/* Use User Id As Session */
-	if ((strlen($_SESSION['user_id']) == 0)) {
+	if ((strlen($_SESSION['login_id']) == 0)) {
 		$host = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$extra = "index";
-		$_SESSION["user_id"] = "";
+		$_SESSION["login_id"] = "";
 		header("Location: http://$host$uri/$extra");
 	}
+}
+
+
+check_login();
+/* Truncate Text */
+function limit_text($text, $limit)
+{
+	if (str_word_count($text, 0) > $limit) {
+		$words = str_word_count($text, 2);
+		$pos   = array_keys($words);
+		$text  = substr($text, 0, $pos[$limit]) . '...';
+	}
+	return $text;
 }

@@ -65,6 +65,70 @@
  *
  */
 
+session_start();
+require_once('../config/config.php');
+require_once('../helpers/authetication.php');
+require_once('../partials/head.php');
+?>
 
+<body class="hold-transition login-page" style="background-image: url('../public/img/bg.jpg'); background-size: cover; ">
 
-echo "You have successfully installed this framework now start coding";
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="" class="h1"><b>i</b>Pet</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email" required name="login_username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required name="login_password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="reset_password">I forgot my password</a>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" name="Login" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <hr>
+                <!-- /.social-auth-links -->
+
+                <div class="text-center">
+                    <a href="register?as=Owner" class="btn btn-primary">Join as Pet Owner</a>
+                    <a href="register?as=Adopter" class="btn btn-primary">Join as Pet Adopter</a>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.login-box -->
+
+    <?php require_once('../partials/scripts.php');
+    ?>
+</body>
+
+</html>
+
+</html>
